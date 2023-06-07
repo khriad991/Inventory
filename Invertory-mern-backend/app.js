@@ -2,7 +2,6 @@ const express = require('express')
 const router = require("./src/routes/api");
 const app = new express();
 const bodyParser = require("body-parser");
-require('dotenv').config()
 
 //security library import ----->>
 const reteLimit = require("express-rate-limit");
@@ -35,7 +34,7 @@ app.use(limiter);
 
 // connect DataBase with mongoose --->>
 let URL ="mongodb+srv://<usere>:<pass>@cluster0.am8jyr5.mongodb.net/INVENTORY?retryWrites=true&w=majority"
-let OPTION ={user:process.env.DB_USER_NAME, pass:process.env.PASSWORD , autoIndex:true};
+let OPTION ={user:"testcrud991", pass:"testcrud991" , autoIndex:true};
 
 mongoose.connect(URL,OPTION,(err)=>{
     if(err){

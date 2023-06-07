@@ -1,9 +1,9 @@
 const app =require("./app");
-
-app.listen(process.env.PORT,(err)=>{
-    if(!err){
-        console.log(`Application Running on http://localhost:${process.env.PORT}`)
-    }else {
+let PORT = 5000
+app.listen(PORT,(err)=>{
+    if(err){
         console.log("Application running fail ")
+    }else {
+        console.log(`Application Running on http://localhost:${PORT}`)
     }
 })
