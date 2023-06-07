@@ -1,5 +1,5 @@
 
-// const OTPSModel = require('../../models/user/OTPSMdel')
+const OTPSModel = require('../../models/Users/OTPSModel')
 const SendEmailUtility = require('../../utility/SendEmailUtility')
 
 const UserVerifyEmailService = async (Request ,DataModel)=>{

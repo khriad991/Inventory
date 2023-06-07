@@ -8,5 +8,4 @@ const OTPSSchema = mongoose.Schema({
 },{versionKey:false})
 
 const OTPSModel = mongoose.model("otps", OTPSSchema);
-
 module.exports= OTPSModel;

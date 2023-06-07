@@ -1,18 +1,18 @@
-// const OTPSModel = require('../../models/user/OTPSMdel')
+const OTPSModel = require('../../models/Users/OTPSModel')
 
 const UserRestPassService = async (Request , DataModel)=>{
 
     let email = Request.body['email'];
     let OTPCode = Request.body['OTP'];
     let NewPass = Request.body['password'];
-    let statusUpdate= 1;
+    let statusUpdate=1;
     try{
         // database first process
-        let OTPUseCount =await OTPSModel.aggregate([{
+        let OTPUsedCount = await OTPSModel.aggregate([{
             $match:{email:email, otp:OTPCode, status:statusUpdate}},
             {$count:'total'}
         ])
-        if(OTPUseCount.length>0){
+        if (OTPUsedCount.length>0){
             // database second process
             let passUpdate = await DataModel.updateOne({email:email},{password:NewPass})
             return{status:'success', data:passUpdate};
