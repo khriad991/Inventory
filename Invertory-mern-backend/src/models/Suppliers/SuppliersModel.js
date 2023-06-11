@@ -4,11 +4,10 @@ const DataSchema = mongoose.Schema({
     UserEmail:{type:String},
     Name:{type:String},
     Address:{type:String},
-    Phone:{type:String},
+    Phone:{type:String,unique:true},
     Email:{type:String},
     CreateDate:{type:Date, default:Date.now()},
 },{versionKey:false})
 
-const SuppliersModel = mongoose.model('supliers',DataSchema)
-
+const SuppliersModel = mongoose.model('suppliers',DataSchema)
 module.exports= SuppliersModel

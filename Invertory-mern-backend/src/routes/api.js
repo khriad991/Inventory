@@ -1,19 +1,11 @@
 const express =require("express");
 const router= express.Router();
 const AuthVerifyMiddleware = require("../middlewares/AuthVerifyMiddleware");
-const {
-    Registration,
-    Login,
-    ProfileUpdate,
-    ProfileDetails,
-    RecoverVerifyEmail,
-    RecoverVerifyOTP,
-    RecoverResetPass} = require("../controllers/Users/UserController");
-const {
-    UpdateBrands,
-    BrandList,
-    BrandDropDown,
-    CreateBrand} = require("../controllers/Brands/BrandsController");
+const {Registration, Login, ProfileUpdate, ProfileDetails, RecoverVerifyEmail,RecoverVerifyOTP,RecoverResetPass} = require("../controllers/Users/UserController");
+const {UpdateBrands, BrandList, BrandDropDown, CreateBrand} = require("../controllers/Brands/BrandsController");
+const {CreateCategory, UpdateCategory, CategorysList, CategoryDropDown} = require("../controllers/Category/CateforysController");
+const {CreateCustomers, UpdateCustomers, CustomerDropDown, CustomersList} = require("../controllers/Customers/CustomersController");
+const {UpdateSuppliers, CreateSuppliers, SuppliersList, SuppliersDropDown} = require("../controllers/Suppliers/SupplirsController");
 
 //User Profile Route
 router.post("/Registration",Registration)
@@ -30,6 +22,25 @@ router.post('/UpdateBrand/:id',AuthVerifyMiddleware, UpdateBrands);
 router.get("/BrandList/:pageNo/:perPage/:searchKeyword",AuthVerifyMiddleware,BrandList);
 router.get('/brandDropdown',AuthVerifyMiddleware,BrandDropDown);
 
+
+// API for Category
+router.post('/CreateCategory',AuthVerifyMiddleware, CreateCategory);
+router.post('/UpdateCategory/:id',AuthVerifyMiddleware,UpdateCategory);
+router.get('/CategoryList/:pageNo/:perPage/:searchKeyword',AuthVerifyMiddleware , CategorysList);
+router.get("/dropDownCategory",AuthVerifyMiddleware,CategoryDropDown);
+
+
+// APi for Customers
+router.post("/CreateCustomer",AuthVerifyMiddleware,CreateCustomers);
+router.post("/UpdateCustomer/:id",AuthVerifyMiddleware,UpdateCustomers);
+router.get("/CustomerList/:pageNo/:perPage/:searchKeyword",AuthVerifyMiddleware,CustomersList);
+router.get("/CustomerDropDown",AuthVerifyMiddleware,CustomerDropDown)
+
+// API for supliers
+router.post("/CreateSupplier",AuthVerifyMiddleware,CreateSuppliers);
+router.post("/UpdateSupplier/:id",AuthVerifyMiddleware,UpdateSuppliers);
+router.get("/SupplierList/:pageNo/:perPage/:searchKeyword",AuthVerifyMiddleware, SuppliersList);
+router.get("/SupplierDropDown",AuthVerifyMiddleware,SuppliersDropDown)
 
 // Router exports for app.js
 module.exports = router
