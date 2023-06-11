@@ -6,6 +6,7 @@ const {UpdateBrands, BrandList, BrandDropDown, CreateBrand} = require("../contro
 const {CreateCategory, UpdateCategory, CategorysList, CategoryDropDown} = require("../controllers/Category/CateforysController");
 const {CreateCustomers, UpdateCustomers, CustomerDropDown, CustomersList} = require("../controllers/Customers/CustomersController");
 const {UpdateSuppliers, CreateSuppliers, SuppliersList, SuppliersDropDown} = require("../controllers/Suppliers/SupplirsController");
+const {CreateExpenses, UpdateExpensesType, ExpensesTypeList, ExpensesTypeDropDown} = require("../controllers/Expenses/ExpensesTypeController");
 
 //User Profile Route
 router.post("/Registration",Registration)
@@ -41,6 +42,14 @@ router.post("/CreateSupplier",AuthVerifyMiddleware,CreateSuppliers);
 router.post("/UpdateSupplier/:id",AuthVerifyMiddleware,UpdateSuppliers);
 router.get("/SupplierList/:pageNo/:perPage/:searchKeyword",AuthVerifyMiddleware, SuppliersList);
 router.get("/SupplierDropDown",AuthVerifyMiddleware,SuppliersDropDown)
+
+// API for ExpensesTypeModel
+router.post("/CreateExpensesType", AuthVerifyMiddleware, CreateExpenses);
+router.post('/UpdateExpensesType/:id',AuthVerifyMiddleware,UpdateExpensesType);
+router.get("/ExpensesTypeList/:pageNo/:perPage/:searchKeyword",AuthVerifyMiddleware , ExpensesTypeList)
+router.get("/ExpensesTypeDropDown",AuthVerifyMiddleware,ExpensesTypeDropDown);
+
+
 
 // Router exports for app.js
 module.exports = router
