@@ -1,10 +1,8 @@
-const mongoose = require("mongoose");
-
-const dataSchema = mongoose.Schema({
+const  mongoose=require('mongoose');
+const DataSchema=mongoose.Schema({
     UserEmail:{type:String},
     Name:{type:String,unique:true},
     CreatedDate:{type:Date,default:Date.now()}
-},{versionKey:false})
-
-const ExpensesTypeModel = mongoose.model("ExpensesType",dataSchema)
-module.exports = ExpensesTypeModel;
+},{versionKey:false});
+const ExpenseTypesModel=mongoose.model('expensesTYpe',DataSchema);
+module.exports=ExpenseTypesModel

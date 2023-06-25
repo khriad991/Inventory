@@ -7,18 +7,19 @@ const {CreateCategory, UpdateCategory, CategorysList, CategoryDropDown} = requir
 const {CreateCustomers, UpdateCustomers, CustomerDropDown, CustomersList} = require("../controllers/Customers/CustomersController");
 const {UpdateSuppliers, CreateSuppliers, SuppliersList, SuppliersDropDown} = require("../controllers/Suppliers/SupplirsController");
 const {CreateExpenses, UpdateExpensesType, ExpensesTypeList, ExpensesTypeDropDown} = require("../controllers/Expenses/ExpensesTypeController");
+const {UpdateExpenses} = require("../controllers/Expenses/ExpensesController");
 
 //User Profile Route
-router.post("/Registration",Registration)
+router.post("/Registration",Registration);
 router.post("/Login", Login);
 router.post("/ProfileUpdate", AuthVerifyMiddleware , ProfileUpdate);
-router.get("/ProfileDetails",AuthVerifyMiddleware, ProfileDetails)
+router.get("/ProfileDetails",AuthVerifyMiddleware, ProfileDetails);
 router.get("/RecoverVerifyEmail/:email", RecoverVerifyEmail);
 router.get("/RecoverVerifyOTP/:email/:otp", RecoverVerifyOTP);
-router.post("/RecoverResetPass", RecoverResetPass)
+router.post("/RecoverResetPass", RecoverResetPass);
 
 // Brands API Create--
-router.post('/CreateBrand', AuthVerifyMiddleware , CreateBrand);
+router.post('/CreateBrand', AuthVerifyMiddleware ,CreateBrand);
 router.post('/UpdateBrand/:id',AuthVerifyMiddleware, UpdateBrands);
 router.get("/BrandList/:pageNo/:perPage/:searchKeyword",AuthVerifyMiddleware,BrandList);
 router.get('/brandDropdown',AuthVerifyMiddleware,BrandDropDown);
@@ -41,14 +42,19 @@ router.get("/CustomerDropDown",AuthVerifyMiddleware,CustomerDropDown)
 router.post("/CreateSupplier",AuthVerifyMiddleware,CreateSuppliers);
 router.post("/UpdateSupplier/:id",AuthVerifyMiddleware,UpdateSuppliers);
 router.get("/SupplierList/:pageNo/:perPage/:searchKeyword",AuthVerifyMiddleware, SuppliersList);
-router.get("/SupplierDropDown",AuthVerifyMiddleware,SuppliersDropDown)
+router.get("/SupplierDropDown",AuthVerifyMiddleware,SuppliersDropDown);
 
 // API for ExpensesTypeModel
 router.post("/CreateExpensesType", AuthVerifyMiddleware, CreateExpenses);
 router.post('/UpdateExpensesType/:id',AuthVerifyMiddleware,UpdateExpensesType);
-router.get("/ExpensesTypeList/:pageNo/:perPage/:searchKeyword",AuthVerifyMiddleware , ExpensesTypeList)
+router.get("/ExpensesTypeList/:pageNo/:perPage/:searchKeyword",AuthVerifyMiddleware , ExpensesTypeList);
 router.get("/ExpensesTypeDropDown",AuthVerifyMiddleware,ExpensesTypeDropDown);
 
+// API for Expenses
+// router.post("/CreateExpenses", AuthVerifyMiddleware,CreateExpenses);
+// router.post("/UpdateExpenses/:id",AuthVerifyMiddleware,UpdateExpenses);
+router.post("/CreateExpenses",AuthVerifyMiddleware,CreateExpenses);
+router.post("/UpdateExpenses/:id",AuthVerifyMiddleware,UpdateExpenses);
 
 
 // Router exports for app.js
